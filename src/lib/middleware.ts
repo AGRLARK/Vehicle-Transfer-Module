@@ -1,4 +1,3 @@
-// lib/middleware.ts
 import multer from "multer";
 import nextConnect from "next-connect";
 import { NextApiRequest, NextApiResponse } from "next";

@@ -16,30 +16,37 @@ export default function CreateDriver() {
     await axios.post("/api/drivers", formData);
   };
 
-  const handleProfilePhotoChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setProfilePhoto(e.target.files[0]);
-    }
-  };
-
   return (
-    <div>
-      <h1>Create Driver</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="p-4">
+      <h1 className="text-2xl font-bold mb-4">Create Driver</h1>
+      <form onSubmit={handleSubmit} className="space-y-4">
         <input
           type="text"
           placeholder="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          className="border p-2 rounded w-full"
         />
         <input
           type="text"
           placeholder="Phone Number"
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
+          className="border p-2 rounded w-full"
         />
-        <input type="file" onChange={handleProfilePhotoChange} />
-        <button type="submit">Add Driver</button>
+        <input
+          type="file"
+          onChange={(e: ChangeEvent<HTMLInputElement>) => {
+            if (e.target.files) setProfilePhoto(e.target.files[0]);
+          }}
+          className="border p-2 rounded w-full"
+        />
+        <button
+          type="submit"
+          className="bg-blue-500 text-white px-4 py-2 rounded"
+        >
+          Create Driver
+        </button>
       </form>
     </div>
   );

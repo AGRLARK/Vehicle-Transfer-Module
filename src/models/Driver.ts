@@ -1,19 +1,17 @@
-// models/Driver.ts
-import mongoose, { Document, Model, Schema } from "mongoose";
+import mongoose, { Schema, Document } from "mongoose";
 
 interface IDriver extends Document {
   name: string;
   phoneNumber: string;
-  profilePhoto: string;
+  profilePhoto: string; // Path to the photo
 }
 
 const DriverSchema: Schema = new Schema({
   name: { type: String, required: true },
   phoneNumber: { type: String, required: true },
-  profilePhoto: { type: String, required: true },
+  profilePhoto: { type: String, required: false }, // Optional
 });
 
-const Driver: Model<IDriver> =
-  mongoose.models.Driver || mongoose.model<IDriver>("Driver", DriverSchema);
+const Driver = mongoose.model<IDriver>("Driver", DriverSchema);
 
 export default Driver;
